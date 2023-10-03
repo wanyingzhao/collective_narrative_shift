@@ -13,4 +13,6 @@ A repo for accepted ICWSM2024 paper: Discovering collective narratives shifts in
 
 ![workflow](visuals/flow_chart.png)
 
+For detail scripts for change point detection, please check https://github.com/yuziheusc/confusion_multi_change
+
 for detailed implementations please check Snakemake file(link...) 
