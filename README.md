@@ -15,4 +15,7 @@ A repo for accepted ICWSM2024 paper: Discovering collective narratives shifts in
 
 For detail scripts for change point detection, please check https://github.com/yuziheusc/confusion_multi_change
 
+To run transformer-srl (adapted from https://github.com/Riccorl/transformer-srl)
+please install packages mentioned in [file](scripts/environment.yml) first
+
 for detailed implementations please check Snakemake file(link...) 
