@@ -13,7 +13,8 @@ import os
 from sklearn.cluster import Birch
 
 embeds_path = sys.argv[1]
-output_path = sys.argv[2]
+narrative_path = sys.argv[2]
+output_path = sys.argv[3]
     
 
 sample_df = pd.read_csv(embeds_path, sep = '\t', header = None, skiprows = 1)
