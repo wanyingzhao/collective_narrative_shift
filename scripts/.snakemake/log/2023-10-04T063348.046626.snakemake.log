@@ -1,0 +1,47 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                 count    min threads    max threads
+--------------------------------  -------  -------------  -------------
+all                                     1              1              1
+arg_sentBert_embds_Covid                2              1              1
+birch_cluster_arg_Covid                 2              1              1
+birch_cluster_narr_Covid                1              1              1
+map_narrative_w_gold_label_Covid        2              1              1
+narrative_sentBert_embds_Covid          1              1              1
+total                                   9              1              1
+
+Select jobs to execute...
+
+[Wed Oct  4 06:33:48 2023]
+rule arg_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds
+    jobid: 14
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:34:02 2023]
+Finished job 14.
+1 of 9 steps (11%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:34:02 2023]
+rule birch_cluster_arg_Covid:
+    input: ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt
+    jobid: 18
+    reason: Missing output files: ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt; Input files updated by another job: ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule birch_cluster_arg_Covid in line 115 of /home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile:
+Job Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt completed successfully, but some output files are missing. 18
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-10-04T063348.046626.snakemake.log

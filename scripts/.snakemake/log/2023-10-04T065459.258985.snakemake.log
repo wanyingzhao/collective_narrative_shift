@@ -1,0 +1,183 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                 count    min threads    max threads
+--------------------------------  -------  -------------  -------------
+aggregate_narrative_Covid               1              1              1
+all                                     1              1              1
+arg_sentBert_embds_Covid                2              1              1
+birch_cluster_arg_Covid                 2              1              1
+birch_cluster_narr_Covid                2              1              1
+map_narrative_w_gold_label_Covid        2              1              1
+narrative_sentBert_embds_Covid          2              1              1
+total                                  12              1              1
+
+Select jobs to execute...
+
+[Wed Oct  4 06:54:59 2023]
+rule aggregate_narrative_Covid:
+    input: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    output: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    jobid: 10
+    reason: Missing output files: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:54:59 2023]
+Finished job 10.
+1 of 12 steps (8%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:54:59 2023]
+rule narrative_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+    jobid: 12
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds; Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:11 2023]
+Finished job 12.
+2 of 12 steps (17%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:11 2023]
+rule birch_cluster_narr_Covid:
+    input: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/birch/narr/2020-01-24_to_2020-01-24.txt
+    jobid: 16
+    reason: Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24, ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:13 2023]
+Finished job 16.
+3 of 12 steps (25%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:13 2023]
+rule arg_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds
+    jobid: 14
+    reason: Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:28 2023]
+Finished job 14.
+4 of 12 steps (33%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:28 2023]
+rule birch_cluster_arg_Covid:
+    input: ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt
+    jobid: 18
+    reason: Missing output files: ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt; Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24, ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:36 2023]
+Finished job 18.
+5 of 12 steps (42%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:36 2023]
+rule map_narrative_w_gold_label_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24, ../data/covid/derived/txSRL/birch/narr/2020-01-24_to_2020-01-24.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt
+    output: ../data/covid/derived/txSRL/birch/gold/2020-01-24_to_2020-01-24.nar
+    jobid: 20
+    reason: Missing output files: ../data/covid/derived/txSRL/birch/gold/2020-01-24_to_2020-01-24.nar; Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24, ../data/covid/derived/txSRL/birch/narr/2020-01-24_to_2020-01-24.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:36 2023]
+Finished job 20.
+6 of 12 steps (50%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:36 2023]
+rule arg_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds
+    jobid: 13
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:45 2023]
+Finished job 13.
+7 of 12 steps (58%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:45 2023]
+rule birch_cluster_arg_Covid:
+    input: ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/birch/arg/2020-01-21_to_2020-01-23.txt
+    jobid: 17
+    reason: Missing output files: ../data/covid/derived/txSRL/birch/arg/2020-01-21_to_2020-01-23.txt; Input files updated by another job: ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:48 2023]
+Finished job 17.
+8 of 12 steps (67%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:48 2023]
+rule narrative_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds
+    jobid: 11
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:56 2023]
+Finished job 11.
+9 of 12 steps (75%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:56 2023]
+rule birch_cluster_narr_Covid:
+    input: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/birch/narr/2020-01-21_to_2020-01-23.txt
+    jobid: 15
+    reason: Missing output files: ../data/covid/derived/txSRL/birch/narr/2020-01-21_to_2020-01-23.txt; Input files updated by another job: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:58 2023]
+Finished job 15.
+10 of 12 steps (83%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:58 2023]
+rule map_narrative_w_gold_label_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23, ../data/covid/derived/txSRL/birch/narr/2020-01-21_to_2020-01-23.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-21_to_2020-01-23.txt
+    output: ../data/covid/derived/txSRL/birch/gold/2020-01-21_to_2020-01-23.nar
+    jobid: 19
+    reason: Missing output files: ../data/covid/derived/txSRL/birch/gold/2020-01-21_to_2020-01-23.nar; Input files updated by another job: ../data/covid/derived/txSRL/birch/narr/2020-01-21_to_2020-01-23.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-21_to_2020-01-23.txt
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:58 2023]
+Finished job 19.
+11 of 12 steps (92%) done
+Select jobs to execute...
+
+[Wed Oct  4 06:55:58 2023]
+localrule all:
+    input: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24, ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds, ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds, ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/birch/narr/2020-01-21_to_2020-01-23.txt, ../data/covid/derived/txSRL/birch/narr/2020-01-24_to_2020-01-24.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-21_to_2020-01-23.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt, ../data/covid/derived/txSRL/birch/gold/2020-01-21_to_2020-01-23.nar, ../data/covid/derived/txSRL/birch/gold/2020-01-24_to_2020-01-24.nar
+    jobid: 0
+    reason: Input files updated by another job: ../data/covid/derived/txSRL/birch/arg/2020-01-24_to_2020-01-24.txt, ../data/covid/derived/txSRL/birch/arg/2020-01-21_to_2020-01-23.txt, ../data/covid/derived/txSRL/birch/gold/2020-01-21_to_2020-01-23.nar, ../data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/birch/narr/2020-01-21_to_2020-01-23.txt, ../data/covid/derived/txSRL/birch/narr/2020-01-24_to_2020-01-24.txt, ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24, ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds, ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds, ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds, ../data/covid/derived/txSRL/birch/gold/2020-01-24_to_2020-01-24.nar
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:55:58 2023]
+Finished job 0.
+12 of 12 steps (100%) done
+Complete log: .snakemake/log/2023-10-04T065459.258985.snakemake.log

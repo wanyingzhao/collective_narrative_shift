@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule map_args_w_gold_label_Covid in line 117 of /home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile:
+Missing input files for rule map_args_w_gold_label_Covid:
+    output: ../data/covid/derived/txSRL/birch/gold/2020-01-21_to_2020-01-23.nar
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    affected files:
+        ../data/covid/derived/txSRL/argument/arg_gold_label.csv
