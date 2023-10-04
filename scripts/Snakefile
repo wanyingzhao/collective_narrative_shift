@@ -12,12 +12,12 @@ raw_covid_files = [
 
 ############ derived covid data #############
 COVID_DERIVED_DIR = pjoin(ROOT_DIR, 'derived')
-COVID_SENTENCES_DIR = pjoin(COVID_DERIVED_DIR, "sentences")
+COVID_SENTENCES_DIR = pjoin(ROOT_DIR, "raw", "sentences")
 COVID_TX_SRL_DIR = pjoin(COVID_DERIVED_DIR, "txSRL")
 COVID_CLEAN_SRL_DIR = pjoin(COVID_DERIVED_DIR, "txSRL", "clean")
 COVID_NARRATIVE_SIMILARITY_DIR = pjoin(COVID_DERIVED_DIR, 'txSRL', "sentBert")
 
-covid_sentences_file = os.path.join(COVID_SENTENCES_DIR, '{raw_file}.txt')
+covid_sentences_file = os.path.join(COVID_SENTENCES_DIR, '{raw_file}.trans')
 covid_tx_descriptions = os.path.join(COVID_TX_SRL_DIR, '{raw_file}.description')
 covid_tx_descriptions_clean = os.path.join(COVID_CLEAN_SRL_DIR, '{raw_file}.description')
 

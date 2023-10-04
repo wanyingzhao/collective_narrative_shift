@@ -1,0 +1,209 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 3
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                 count    min threads    max threads
+--------------------------------  -------  -------------  -------------
+aggregate_narrative_Covid               2              1              1
+all                                     1              1              1
+arg_sentBert_embds_Covid                2              1              1
+birch_cluster_arg_Covid                 2              1              1
+birch_cluster_narr_Covid                2              1              1
+clean_txSRL_Covid                       4              1              1
+get_txSRL_description_Covid             4              1              1
+map_narrative_w_gold_label_Covid        2              1              1
+narrative_sentBert_embds_Covid          2              1              1
+total                                  21              1              1
+
+Select jobs to execute...
+
+[Wed Oct  4 12:28:41 2023]
+rule get_txSRL_description_Covid:
+    input: ../data/covid/raw/sentences/covid_2020-01-23.tsv.trans
+    output: ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description
+    jobid: 3
+    reason: Missing output files: ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description; Set of input files has changed since last execution
+    wildcards: raw_file=covid_2020-01-23.tsv
+    resources: tmpdir=/tmp
+
+
+[Wed Oct  4 12:28:41 2023]
+rule get_txSRL_description_Covid:
+    input: ../data/covid/raw/sentences/covid_2020-01-24.tsv.trans
+    output: ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description
+    jobid: 4
+    reason: Missing output files: ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description; Set of input files has changed since last execution
+    wildcards: raw_file=covid_2020-01-24.tsv
+    resources: tmpdir=/tmp
+
+
+[Wed Oct  4 12:28:41 2023]
+rule get_txSRL_description_Covid:
+    input: ../data/covid/raw/sentences/covid_2020-01-22.tsv.trans
+    output: ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description
+    jobid: 2
+    reason: Missing output files: ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description; Set of input files has changed since last execution
+    wildcards: raw_file=covid_2020-01-22.tsv
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:29:15 2023]
+Finished job 2.
+1 of 21 steps (5%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:29:15 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description
+    jobid: 6
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description; Input files updated by another job: ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description
+    wildcards: raw_file=covid_2020-01-22.tsv
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:29:15 2023]
+Finished job 6.
+2 of 21 steps (10%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:29:16 2023]
+rule get_txSRL_description_Covid:
+    input: ../data/covid/raw/sentences/covid_2020-01-21.tsv.trans
+    output: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description
+    jobid: 1
+    reason: Missing output files: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description; Set of input files has changed since last execution
+    wildcards: raw_file=covid_2020-01-21.tsv
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:29:30 2023]
+Finished job 1.
+3 of 21 steps (14%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:29:30 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description
+    jobid: 5
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description; Input files updated by another job: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description
+    wildcards: raw_file=covid_2020-01-21.tsv
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:29:31 2023]
+Finished job 5.
+4 of 21 steps (19%) done
+[Wed Oct  4 12:30:31 2023]
+Finished job 3.
+5 of 21 steps (24%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:30:31 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description
+    jobid: 7
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description; Input files updated by another job: ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description
+    wildcards: raw_file=covid_2020-01-23.tsv
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:30:31 2023]
+Finished job 7.
+6 of 21 steps (29%) done
+[Wed Oct  4 12:33:41 2023]
+Finished job 4.
+7 of 21 steps (33%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:33:41 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    jobid: 8
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description; Input files updated by another job: ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description
+    wildcards: raw_file=covid_2020-01-24.tsv
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:33:41 2023]
+Finished job 8.
+8 of 21 steps (38%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:33:41 2023]
+rule aggregate_narrative_Covid:
+    input: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    output: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    jobid: 9
+    reason: Missing output files: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23; Input files updated by another job: ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+
+[Wed Oct  4 12:33:41 2023]
+rule aggregate_narrative_Covid:
+    input: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    output: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    jobid: 10
+    reason: Missing output files: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24; Input files updated by another job: ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:33:41 2023]
+Finished job 9.
+9 of 21 steps (43%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:33:41 2023]
+rule arg_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds
+    jobid: 13
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds; Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+
+[Wed Oct  4 12:33:41 2023]
+rule narrative_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds
+    jobid: 11
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds; Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:33:42 2023]
+Finished job 10.
+10 of 21 steps (48%) done
+Select jobs to execute...
+
+[Wed Oct  4 12:33:42 2023]
+rule narrative_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+    jobid: 12
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds; Input files updated by another job: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 12:33:47 2023]
+Error in rule narrative_sentBert_embds_Covid:
+    jobid: 11
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds
+    shell:
+        /home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python senBert/get_sentBert_embds_4_narrs.py ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23 ../data/covid/derived/txSRL/sentBert/narr/2020-01-21_to_2020-01-23.embds
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Wed Oct  4 12:33:47 2023]
+Error in rule narrative_sentBert_embds_Covid:
+    jobid: 12
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+    shell:
+        /home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python senBert/get_sentBert_embds_4_narrs.py ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24 ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Wed Oct  4 12:33:51 2023]
+Finished job 13.
+11 of 21 steps (52%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-10-04T122840.981141.snakemake.log
