@@ -18,4 +18,5 @@ For detail scripts for change point detection, please check https://github.com/y
 To run transformer-srl (adapted from https://github.com/Riccorl/transformer-srl)
 please install packages mentioned in [file](scripts/environment.yml) first
 
-for detailed implementations please check Snakemake file(link...) 
+Please check [Snakemake_narrative](scripts/Snakemake_narrative) for detail workflow of narrative related implementation. 
+![Snakemake_narrative](visuals/dag.png)
