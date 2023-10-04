@@ -1,0 +1,119 @@
+from  pathlib import Path
+from os.path import join as pjoin
+
+############### COVID TWEETS ########################
+############ raw data ##############
+
+raw_covid_files = ["covid_2020-01-23.tsv")] # file of sentences
+
+############ derived covid data #############
+COVID_DERIVED_DIR = pjoin(ROOT_DIR, 'derived')
+COVID_SENTENCES_DIR = pjoin(COVID_DERIVED_DIR, "sentences")
+COVID_TX_SRL_DIR = pjoin(COVID_DERIVED_DIR, "txSRL")
+COVID_CLEAN_SRL_DIR = pjoin(COVID_DERIVED_DIR, "txSRL", "clean")
+COVID_NARRATIVE_SIMILARITY_DIR = pjoin(COVID_DERIVED_DIR, 'txSRL', "sentBert")
+
+covid_sentences_file = os.path.join(COVID_SENTENCES_DIR, '{raw_file}.txt')
+covid_tx_descriptions = os.path.join(COVID_TX_SRL_DIR, '{raw_file}.description')
+covid_tx_descriptions_clean = os.path.join(COVID_CLEAN_SRL_DIR, '{raw_file}.description')
+
+############# aggreate covid narrative #########
+# check format_narrative
+COVID_NARRATIVE_DIR = "/home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative"
+covid_narrative_files = []
+for filename in os.listdir(COVID_NARRATIVE_DIR):
+    if filename.endswith(".csv"):
+        covid_narrative_files.append(filename)
+
+covid_aggregate_narrative = os.path.join(COVID_NARRATIVE_DIR, "{raw_file}")    
+
+covid_tx_sentBert_embds= os.path.join(COVID_NARRATIVE_SIMILARITY_DIR, "{raw_file}.embds")
+covid_tx_sentBert_similarity= os.path.join(COVID_NARRATIVE_SIMILARITY_DIR, "{raw_file}.simi")
+covid_birch_result = os.path.join(COVID_NARRATIVE_DIR, "birch", "{raw_file}.birch" )
+covid_birch_narrative = os.path.join(COVID_NARRATIVE_DIR, "birch_narrative", "{raw_file}.nar")
+covid_narrative_gold  = os.path.join(COVID_NARRATIVE_DIR, 'birch_gold', "{raw_file}.nar") 
+
+covid_arguments_sum = pjoin(COVID_TX_SRL_DIR, "argument", "sum.csv") 
+covid_birch_narr_gold_labels = pjoin(COVID_NARRATIVE_DIR, "birch_full_data", "sum_gold.csv")
+covid_birch_arg_gold_list = pjoin(COVID_TX_SRL_DIR, "argument", "arg_gold_label.csv") 
+
+
+rule all:
+    input:
+        expand(covid_tx_descriptions,  raw_file = raw_covid_files)
+#       expand(covid_tx_descriptions_clean,  raw_file = raw_covid_files),
+#       expand(covid_tx_narrative_similarity, raw_file = raw_covid_files),
+#       expand(covid_tx_sentBert_similarity, raw_file = raw_covid_files),
+#       expand(covid_tx_sentBert_embds, raw_file = covid_narrative_files),
+#       expand(covid_birch_result, raw_file = covid_narrative_files),
+#       expand(covid_birch_narrative, raw_file = covid_narrative_files),
+#       expand(covid_narrative_gold , raw_file = covid_narrative_files)
+        
+
+
+################# covid rules #################
+#rule log_odd_w_narrative_Covid:
+#    input:
+#       covid_narrative_gold  
+
+
+rule map_args_w_gold_label_Covid:
+    input:
+        covid_birch_narrative,
+        covid_birch_arg_gold_list
+    output:
+        covid_narrative_gold 
+    shell:
+        "/home/zhaowany/anaconda3/envs/phase1b/bin/python process_argument/replace_arg_with_gold.py {input} {output}"
+
+
+rule map_narrative_w_gold_label_Covid:
+    input:
+        covid_aggregate_narrative,
+        covid_birch_narr_gold_labels
+    output:
+        covid_birch_narrative
+    shell:
+        "/home/zhaowany/anaconda3/envs/phase1b/bin/python format_narratives/replace_narr_with_gold.py {input} {output}"
+
+
+rule birch_cluster_Covid:
+    input:
+        covid_tx_sentBert_embds,
+        covid_aggregate_narrative
+    output:
+        covid_birch_result
+    shell:
+        "/home/zhaowany/anaconda3/envs/phase1b/bin/python birch/clustering.py {input} {output}"
+    
+
+rule narrative_sentBert_embds_Covid:
+    input:
+        covid_aggregate_narrative
+    output:
+        covid_tx_sentBert_embds
+    shell:
+        "/home/zhaowany/anaconda3/envs/sentBert/bin/python senBert/get_sentBert_embds.py {input} {output}"
+
+
+
+#rule aggregate_narrative_Covid:
+
+
+
+rule clean_txSRL_Covid:
+    input:
+        covid_tx_descriptions
+    output:
+        covid_tx_descriptions_clean
+    shell:
+        "/home/zhaowany/anaconda3/envs/phase1b/bin/python pb2va/clean_txSRL.py {input} {output}"
+
+
+rule get_txSRL_description_Covid:
+    input:
+        covid_sentences_file
+    output:
+        covid_tx_descriptions
+    shell:
+        "/home/zhaowany/anaconda3/envs/phase1b/bin/python tx-srl/run.py {input} {output}"

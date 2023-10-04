@@ -1,0 +1,77 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count    min threads    max threads
+-----------------  -------  -------------  -------------
+all                      1              1              1
+clean_txSRL_Covid        4              1              1
+total                    5              1              1
+
+Select jobs to execute...
+
+[Tue Oct  3 23:45:10 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description
+    jobid: 7
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description
+    wildcards: raw_file=covid_2020-01-23.tsv
+    resources: tmpdir=/tmp
+
+
+[Tue Oct  3 23:45:10 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    jobid: 8
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    wildcards: raw_file=covid_2020-01-24.tsv
+    resources: tmpdir=/tmp
+
+
+[Tue Oct  3 23:45:10 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description
+    jobid: 5
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description
+    wildcards: raw_file=covid_2020-01-21.tsv
+    resources: tmpdir=/tmp
+
+
+[Tue Oct  3 23:45:10 2023]
+rule clean_txSRL_Covid:
+    input: ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description
+    output: ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description
+    jobid: 6
+    reason: Missing output files: ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description
+    wildcards: raw_file=covid_2020-01-22.tsv
+    resources: tmpdir=/tmp
+
+[Tue Oct  3 23:45:10 2023]
+Finished job 5.
+1 of 5 steps (20%) done
+[Tue Oct  3 23:45:10 2023]
+Finished job 6.
+2 of 5 steps (40%) done
+[Tue Oct  3 23:45:10 2023]
+Finished job 7.
+3 of 5 steps (60%) done
+[Tue Oct  3 23:45:10 2023]
+Finished job 8.
+4 of 5 steps (80%) done
+Select jobs to execute...
+
+[Tue Oct  3 23:45:10 2023]
+localrule all:
+    input: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    jobid: 0
+    reason: Input files updated by another job: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description
+    resources: tmpdir=/tmp
+
+[Tue Oct  3 23:45:10 2023]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: .snakemake/log/2023-10-03T234510.126596.snakemake.log

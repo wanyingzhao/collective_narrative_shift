@@ -1,0 +1,3 @@
+NameErrorin line 98 of /home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile:
+name 'covid_tx_sentBert_embds' is not defined
+  File "/home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile", line 98, in <module>

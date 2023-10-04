@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                               count    min threads    max threads
+------------------------------  -------  -------------  -------------
+all                                   1              1              1
+narrative_sentBert_embds_Covid        2              1              1
+total                                 3              1              1
+
+Select jobs to execute...
+
+[Tue Oct  3 23:47:55 2023]
+rule narrative_sentBert_embds_Covid:
+    input: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/sentBert/2020-01-24_to_2020-01-24.embds
+    jobid: 12
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/2020-01-24_to_2020-01-24.embds
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+
+[Tue Oct  3 23:47:55 2023]
+rule narrative_sentBert_embds_Covid:
+    input: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    output: ../data/covid/derived/txSRL/sentBert/2020-01-21_to_2020-01-23.embds
+    jobid: 11
+    reason: Missing output files: ../data/covid/derived/txSRL/sentBert/2020-01-21_to_2020-01-23.embds
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+[Tue Oct  3 23:47:55 2023]
+[Tue Oct  3 23:47:55 2023]
+Error in rule narrative_sentBert_embds_Covid:
+    jobid: 11
+    output: ../data/covid/derived/txSRL/sentBert/2020-01-21_to_2020-01-23.embds
+    shell:
+        /home/zhaowany/anaconda3/envs/sentBert/bin/python senBert/get_sentBert_embds.py /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23 ../data/covid/derived/txSRL/sentBert/2020-01-21_to_2020-01-23.embds
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Error in rule narrative_sentBert_embds_Covid:
+    jobid: 12
+    output: ../data/covid/derived/txSRL/sentBert/2020-01-24_to_2020-01-24.embds
+    shell:
+        /home/zhaowany/anaconda3/envs/sentBert/bin/python senBert/get_sentBert_embds.py /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24 ../data/covid/derived/txSRL/sentBert/2020-01-24_to_2020-01-24.embds
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-10-03T234755.651384.snakemake.log

@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule get_txSRL_description_Covid in line 59 of /home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile:
+Missing input files for rule get_txSRL_description_Covid:
+    output: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description
+    wildcards: raw_file=covid_2020-01-21.tsv
+    affected files:
+        ../data/covid/derived/sentences/covid_2020-01-21.tsv.txt

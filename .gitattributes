@@ -1,0 +1,4 @@
+data/covid/derived/txSRL/sentBert/2020-01-24_to_2020-01-24.embds filter=lfs diff=lfs merge=lfs -text
+data/covid/derived/txSRL/sentBert/arg/2020-01-24_to_2020-01-24.embds filter=lfs diff=lfs merge=lfs -text
+data/covid/derived/txSRL/sentBert filter=lfs diff=lfs merge=lfs -text
+data/covid/derived/txSRL/sentBert/arg/2020-01-21_to_2020-01-23.embds filter=lfs diff=lfs merge=lfs -text

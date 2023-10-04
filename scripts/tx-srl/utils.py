@@ -10,8 +10,6 @@ import pandas as pd
 import nltk
 nltk.download('punkt')
 
-from incas_python.api.model import Annotation
-from incas_python.api.model.offset import Offset
 
 def clean_tweet(tweet):
     return clean(tweet, no_urls=True, no_emails = True)

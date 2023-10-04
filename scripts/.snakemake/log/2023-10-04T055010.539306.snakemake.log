@@ -1,0 +1,12 @@
+Building DAG of jobs...
+AmbiguousRuleException:
+Rules aggregate_narrative_Covid and birch_cluster_Covid are ambiguous for the file ../data/covid/derived/txSRL/aggreated_narrative/raw/birch_2020-01-21_to_2020-01-23.txt.
+Consider starting rule output with a unique prefix, constrain your wildcards, or use the ruleorder directive.
+Wildcards:
+	aggregate_narrative_Covid: time_range=raw/birch_2020-01-21_to_2020-01-23.txt
+	birch_cluster_Covid: time_range=2020-01-21_to_2020-01-23
+Expected input files:
+	aggregate_narrative_Covid: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+	birch_cluster_Covid: ../data/covid/derived/txSRL/sentBert/2020-01-21_to_2020-01-23.embds ../data/covid/derived/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23Expected output files:
+	aggregate_narrative_Covid: ../data/covid/derived/txSRL/aggreated_narrative/raw/birch_2020-01-21_to_2020-01-23.txt
+	birch_cluster_Covid: ../data/covid/derived/txSRL/aggreated_narrative/raw/birch_2020-01-21_to_2020-01-23.txt

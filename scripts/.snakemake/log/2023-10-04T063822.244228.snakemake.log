@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                 count    min threads    max threads
+--------------------------------  -------  -------------  -------------
+all                                     1              1              1
+arg_sentBert_embds_Covid                2              1              1
+birch_cluster_arg_Covid                 2              1              1
+birch_cluster_narr_Covid                2              1              1
+map_narrative_w_gold_label_Covid        2              1              1
+narrative_sentBert_embds_Covid          2              1              1
+total                                  11              1              1
+
+Select jobs to execute...
+
+[Wed Oct  4 06:38:22 2023]
+rule narrative_sentBert_embds_Covid:
+    input: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+    jobid: 12
+    reason: Updated input files: ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Wed Oct  4 06:38:26 2023]
+Error in rule narrative_sentBert_embds_Covid:
+    jobid: 12
+    output: ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+    shell:
+        /home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python senBert/get_sentBert_embds_4_narrs.py ../data/covid/derived/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24 ../data/covid/derived/txSRL/sentBert/narr/2020-01-24_to_2020-01-24.embds
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2023-10-04T063822.244228.snakemake.log
