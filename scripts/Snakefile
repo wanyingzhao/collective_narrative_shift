@@ -12,31 +12,30 @@ raw_covid_files = [
 
 ############ derived covid data #############
 COVID_DERIVED_DIR = pjoin(ROOT_DIR, 'derived')
-COVID_SENTENCES_DIR = pjoin(COVID_DERIVED_DIR, "sentences")
+COVID_SENTENCES_DIR = pjoin(ROOT_DIR, "raw", "sentences")
 COVID_TX_SRL_DIR = pjoin(COVID_DERIVED_DIR, "txSRL")
 COVID_CLEAN_SRL_DIR = pjoin(COVID_DERIVED_DIR, "txSRL", "clean")
 COVID_NARRATIVE_SIMILARITY_DIR = pjoin(COVID_DERIVED_DIR, 'txSRL', "sentBert")
 
-covid_sentences_file = os.path.join(COVID_SENTENCES_DIR, '{raw_file}.txt')
+covid_sentences_file = os.path.join(COVID_SENTENCES_DIR, '{raw_file}.trans')
 covid_tx_descriptions = os.path.join(COVID_TX_SRL_DIR, '{raw_file}.description')
 covid_tx_descriptions_clean = os.path.join(COVID_CLEAN_SRL_DIR, '{raw_file}.description')
 
 ############# aggreate covid narrative #########
 # check format_narrative
-COVID_NARRATIVE_DIR = "/home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative"
+COVID_NARRATIVE_DIR = pjoin(COVID_TX_SRL_DIR, "aggreated_narrative")
+COVID_BIRCH_DIR = pjoin(COVID_TX_SRL_DIR, "birch")
 covid_time_ranges = ["2020-01-21_to_2020-01-23",
                      "2020-01-24_to_2020-01-24"]
 
 covid_aggregate_narrative = os.path.join(COVID_NARRATIVE_DIR, "{time_range}")    
 
-covid_tx_sentBert_embds= os.path.join(COVID_NARRATIVE_SIMILARITY_DIR, "{time_range}.embds")
-covid_birch_result = os.path.join(COVID_NARRATIVE_DIR, "birch", "{time_range}.birch" )
-covid_birch_narrative = os.path.join(COVID_NARRATIVE_DIR, "birch_narrative", "{time_range}.nar")
-covid_narrative_gold  = os.path.join(COVID_NARRATIVE_DIR, 'birch_gold', "{time_range}.nar") 
+covid_tx_sentBert_embds_narr= os.path.join(COVID_NARRATIVE_SIMILARITY_DIR, "narr", "{time_range}.embds")
+covid_tx_sentBert_embds_arg= os.path.join(COVID_NARRATIVE_SIMILARITY_DIR, "arg", "{time_range}.embds")
+covid_birch_narr = os.path.join(COVID_BIRCH_DIR, "narr", "{time_range}.txt" )
+covid_birch_arg = os.path.join(COVID_BIRCH_DIR, "arg", "{time_range}.txt" )
 
-covid_arguments_sum = pjoin(COVID_TX_SRL_DIR, "argument", "sum.csv") 
-covid_birch_narr_gold_labels = pjoin(COVID_NARRATIVE_DIR, "birch_full_data", "sum_gold.csv")
-covid_birch_arg_gold_list = pjoin(COVID_TX_SRL_DIR, "argument", "arg_gold_label.csv") 
+covid_narrative_gold  = os.path.join(COVID_BIRCH_DIR, 'gold', "{time_range}.nar") 
 
 
 rule all:
@@ -44,14 +43,12 @@ rule all:
         expand(covid_tx_descriptions,  raw_file = raw_covid_files),
         expand(covid_tx_descriptions_clean,  raw_file = raw_covid_files),
         expand(covid_aggregate_narrative, time_range = covid_time_ranges),
-        expand(covid_tx_sentBert_embds, time_range = covid_time_ranges),
-#       expand(covid_birch_result, time_range = covid_time_ranges),
-#       expand(covid_birch_narrative, time_range = covid_time_ranges),
-#       expand(covid_narrative_gold , time_range = covid_time_ranges),
-#       expand(covid_arguments_sum),
-#       expand(covid_birch_narr_gold_labels),
-#       expand(covid_birch_arg_gold_list),
-#       expand(log_odd)
+        expand(covid_tx_sentBert_embds_narr, time_range = covid_time_ranges),
+        expand(covid_tx_sentBert_embds_arg, time_range = covid_time_ranges),
+        expand(covid_birch_narr, time_range = covid_time_ranges),
+        expand(covid_birch_arg, time_range = covid_time_ranges),
+        expand(covid_narrative_gold , time_range = covid_time_ranges),
+
         
 
 
@@ -90,45 +87,56 @@ rule narrative_sentBert_embds_Covid:
     input:
         covid_aggregate_narrative
     output:
-        covid_tx_sentBert_embds
+        covid_tx_sentBert_embds_narr
     shell:
-        "/home/zhaowany/anaconda3/envs/sentBert/bin/python senBert/get_sentBert_embds_4_narrs.py {input} {output}"
+        "/home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python senBert/get_sentBert_embds_4_narrs.py {input} {output}"
 
 
-################# covid rules #################
-#rule log_odd_w_narrative_Covid:
-#    input:
-#       covid_narrative_gold  
-
-
-rule map_args_w_gold_label_Covid:
+rule birch_cluster_narr_Covid:
     input:
-        covid_birch_narrative,
-        covid_birch_arg_gold_list
+        covid_tx_sentBert_embds_narr,
+        covid_aggregate_narrative
     output:
-        covid_narrative_gold 
+        covid_birch_narr
     shell:
-        "/home/zhaowany/anaconda3/envs/phase1b/bin/python process_argument/replace_arg_with_gold.py {input} {output}"
+        "/home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python birch/birch_cluster_on_narr.py {input} {output}"
+        
 
+rule arg_sentBert_embds_Covid:
+    input:
+        covid_aggregate_narrative
+    output:
+        covid_tx_sentBert_embds_arg
+    shell:
+        "/home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python senBert/get_sentBert_embds_4_args.py {input} {output}"
+        
+        
+rule birch_cluster_arg_Covid:
+    input:
+        covid_tx_sentBert_embds_arg,
+        covid_aggregate_narrative
+    output:
+        covid_birch_arg
+    shell:
+        "/home/zhaowany/anaconda3/envs/aggregate_narrative/bin/python birch/birch_cluster_on_arg.py {input} {output}"
+        
+        
 
 rule map_narrative_w_gold_label_Covid:
     input:
         covid_aggregate_narrative,
-        covid_birch_narr_gold_labels
+        covid_birch_narr,
+        covid_birch_arg,
     output:
-        covid_birch_narrative
+        covid_narrative_gold
     shell:
-        "/home/zhaowany/anaconda3/envs/phase1b/bin/python format_narratives/replace_narr_with_gold.py {input} {output}"
+        "/home/zhaowany/anaconda3/envs/phase1b/bin/python process_narratives/replace_with_gold_labels.py {input} {output}"
 
 
-rule birch_cluster_Covid:
-    input:
-        covid_tx_sentBert_embds,
-        covid_aggregate_narrative
-    output:
-        covid_birch_result
-    shell:
-        "/home/zhaowany/anaconda3/envs/phase1b/bin/python birch/clustering.py {input} {output}"
+
+
+
+
     
 
 

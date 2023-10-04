@@ -34,7 +34,7 @@ def format_narrative(df):
 
 if __name__ == "__main__":
 
-    df = pd.read_csv(INPUT,  usecols = ["ARG0", "ARG1", "va_key"], sep = ',')
+    df = pd.read_csv(INPUT,  usecols = ["ARG0", "ARG1", "va_key"], sep = '\t')
     df = format_narrative(df)
     
     print("start getting sentBERT embeddings")
