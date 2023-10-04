@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                          count    min threads    max threads
+-------------------------  -------  -------------  -------------
+aggregate_narrative_Covid        2              1              1
+all                              1              1              1
+total                            3              1              1
+
+Select jobs to execute...
+
+[Tue Oct  3 23:45:45 2023]
+rule aggregate_narrative_Covid:
+    input: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    output: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    jobid: 9
+    reason: Missing output files: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23
+    wildcards: time_range=2020-01-21_to_2020-01-23
+    resources: tmpdir=/tmp
+
+
+[Tue Oct  3 23:45:45 2023]
+rule aggregate_narrative_Covid:
+    input: ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description
+    output: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    jobid: 10
+    reason: Missing output files: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    wildcards: time_range=2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Tue Oct  3 23:45:45 2023]
+Finished job 9.
+1 of 3 steps (33%) done
+[Tue Oct  3 23:45:45 2023]
+Finished job 10.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Tue Oct  3 23:45:45 2023]
+localrule all:
+    input: ../data/covid/derived/txSRL/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/covid_2020-01-24.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-21.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-22.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-23.tsv.description, ../data/covid/derived/txSRL/clean/covid_2020-01-24.tsv.description, /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23, /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    jobid: 0
+    reason: Input files updated by another job: /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-21_to_2020-01-23, /home/zhaowany/INCAS/incas-iu/data/derived/covid/txSRL/aggreated_narrative/2020-01-24_to_2020-01-24
+    resources: tmpdir=/tmp
+
+[Tue Oct  3 23:45:45 2023]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2023-10-03T234545.035843.snakemake.log

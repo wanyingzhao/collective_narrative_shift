@@ -1,0 +1,3 @@
+NameErrorin line 123 of /home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile:
+name 'raw_covid_files' is not defined
+  File "/home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile", line 123, in <module>

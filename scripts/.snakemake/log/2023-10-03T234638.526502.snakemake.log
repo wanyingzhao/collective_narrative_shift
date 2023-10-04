@@ -1,0 +1,3 @@
+NameErrorin line 47 of /home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile:
+name 'covid_narrative_file' is not defined
+  File "/home/zhaowany/INCAS/collective_narrative_shift/scripts/Snakefile", line 47, in <module>
