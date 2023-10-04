@@ -1,0 +1,8 @@
+sent_id,ARG0,ARG1,narrative,verb,frame,sentence,va_frame,va_key
+2,people,potential health implications wuhan coronavirus important cdc,"('people', 'concerned', 'potential health implications wuhan coronavirus important cdc')",concerned,va:0628f,people concerned potential health implications wuhan coronavirus important cdc,va:0628f,REFER
+3,news school town,either asian - american student,"('news school town', 'sequestering', 'either asian - american student')",sequestering,va:0307f,how long see news school town sequestering either asian-american student,va:0307f,ISOLATE
+4,new coronavirus,washington state cdc,"('new coronavirus', 'reported', 'washington state cdc')",reported,va:0177f,1st confirmed case new coronavirus reported washington state cdc,va:0177f,INFORM
+6,the @cdcgov centerfordiseasecontrol,someone washingtonstate diagnosed,"('the @cdcgov centerfordiseasecontrol', 'said', 'someone washingtonstate diagnosed')",said,va:0424f,the @cdcgov centerfordiseasecontrol said someone washingtonstate diagnosed,va:0424f,AFFIRM
+10,i,cdc ’s teleconference today,"('i', 'listened', 'cdc ’s teleconference today')",listened,va:0094f,i listened cdc’s teleconference today coronavirus it’s one keep eye sugge,va:0094f,HEAR_LISTEN
+10,one,eye sugge,"('one', 'keep', 'eye sugge')",keep,va:0114f,i listened cdc’s teleconference today coronavirus it’s one keep eye sugge,va:0114f,CONTINUE
+11,1st case,us,"('1st case', 'hits', 'us')",hits,va:0092f,cdc 1st case deadly china virus hits us; more expected newsmax via @newsmax,va:0092f,HIT
